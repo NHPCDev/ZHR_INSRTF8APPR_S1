@@ -1,0 +1,84 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Table
+        id="idSelfDetailsTables"
+        mode="None"
+        items="{
+            path:'viewModel>/SelfDetails'
+        }"
+        growing="true"
+        updateFinished="onManageSelfTableUpdateFinish"
+    >
+        <headerToolbar>
+            <OverflowToolbar id="idOverTlbrComDtlSelf">
+                <content>
+                    <Title
+                        id="idSelfTableTitles"
+                        text="{i18n>ManageSelfTableTitle}"
+                        level="H2"
+                    />
+                    <ToolbarSpacer id="idSelfToolbarSpacer" />
+
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+
+        <columns>
+            <Column id="idColHdrDtlComp1Self">
+                <Text
+                    id="idColHdrTxtDtlComp1Self"
+                    text="{i18n>sNoSelf}"
+                />
+            </Column>
+             <Column id="idColHdrDtlComp5Self">
+                <Text
+                    id="idColHdrTxtDtlComp5Self"
+                    text="{i18n>Natureofsecurity}"
+                />
+            </Column>
+
+            <Column id="idColHdrDtlComp2Self">
+                <Text
+                    id="idColHdrTxtDtlComp2Self"
+                    text="{i18n>noOfSec}"
+                />
+            </Column>
+
+            <Column id="idColHdrDtlComp4Self">
+                <Text
+                    id="idColHdrTxtDtlComp4Self"
+                    text="{i18n>dpIdSelfLbl}"
+                />
+            </Column>
+            <!-- <Column id="idColHdrDtlComp5Self">
+                <Text
+                    id="idColHdrTxtDtlComp5Self"
+                    text="{i18n>createdOnSelf}"
+                />
+            </Column> -->
+        </columns>
+
+        <items>
+            <ColumnListItem id="idCompDtlCllstItmSelf">
+                <cells>
+                    <ObjectIdentifier id="idObjtablDtlSelf" title="{viewModel>SelfNo}" />
+                    
+                    <Text id="idReltbl02Self" text="{viewModel>Natureofsecurity}" />
+
+                    <Text id="idReltbl01Self" text="{viewModel>NoOfSecuritiesheld}" />
+                    <Text id="idReltbl03Self" text="{viewModel>DPClientID}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>
+
+
+
+
+
+
+
+

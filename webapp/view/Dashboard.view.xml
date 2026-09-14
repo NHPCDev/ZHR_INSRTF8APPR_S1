@@ -1,0 +1,254 @@
+<mvc:View
+    controllerName="com.nhpc.zhrinsrtf8apprs1.controller.Dashboard"
+    height="100%"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+>
+    <f:DynamicPage
+        id="idDashDynamicPage"
+        headerExpanded="true"
+    >
+        <f:header>
+            <f:DynamicPageHeader id="idDashDynamicPageHeader">
+                <f:content>
+                    <fb:FilterBar
+                        id="idDashFilterbar"
+                        persistencyKey="myPersKey"
+                        useToolbar="false"
+                        search=".onDashboardFilterSearch"
+                        filterChange=".onFilterChange"
+                        afterVariantLoad=".onAfterVariantLoad"
+                        showClearOnFB="true"
+                        clear="onFilterClear"
+                    >
+                        <fb:filterGroupItems>
+                             <!-- Emp Id -->
+                    <fb:FilterGroupItem
+                        id="idEmpIdFilterGroupItem"
+                        groupName="__BASIC"
+                        name="EmpId"
+                        label="{i18n>empId}"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                           
+                            <Input
+                                id="empIdInputFilter"
+                                value="{viewModel>/filterData/empId}"
+                                showValueHelp="true"
+                                app:valuehelp="EmployeeFilterInput"
+                                valueHelpRequest="onValueHelpRequest"
+                                change="onValueHelpChange"
+                            />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+
+                            <!-- Status filter -->
+                            <fb:FilterGroupItem
+                                id="idStatus"
+                                name="Status"
+                                label="{i18n>filterStatusLabel}"
+                                groupName="Group4"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <ComboBox
+                                        id="idCmboxStatusFilter"
+                                        width="100%"
+                                        selectedKey="{viewModel>/filterData/Status}"
+                                        change="onComboBoxChange"
+                                        items="{/ZHR_CDS_IT_STATUSCODE_F4H}"
+                                    >
+                                        <core:Item
+                                            id="idCmboxItmStatusFilter"
+                                            key="{Statustext}"
+                                            text="{Statustext}"
+                                        />
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox id="idDashboardVbox">
+                <Table
+                    id="idDashboardTable"
+                    mode="None"
+                    sticky="ColumnHeaders,HeaderToolbar"
+                    items="{
+                        path: '/Form8HeadSet',
+                        filters:[
+                            {
+                                path : 'ApprovalFlag',
+                                operator : 'EQ',
+                                value1 : '8'
+                            }
+                        ]
+                        
+                    }"
+                    alternateRowColors="true"
+                    growing="true"
+                    growingThreshold="20"
+                    updateFinished="onManageTaskTableUpdateFinish"
+                >
+                    <headerToolbar>
+                        <OverflowToolbar id="idOvrTlbrDash">
+                            <Title
+                                id="idDashboardTitle"
+                                text="{i18n>compliancedashboardTitle}"
+                            />
+                            <ToolbarSpacer id="idTlBrSpcrDash" />
+
+                            <!-- <Button
+                                id="idCreateNewReqBtn"
+                                text="{i18n>createBtn}"
+                                press="handleCreateBtnPress"
+                                type="Emphasized"
+                                icon="sap-icon://add"
+                            /> -->
+                            <Button
+                                id="idBtnExport"
+                                type="Reject"
+                                text="{i18n>DownloadReport}"
+                                icon="sap-icon://excel-attachment"
+                                press="onExport"
+                            />
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <!-- <Column id="idColHdrDashComp1">
+                            <Text id="idColHdrTextComDash1" text="{i18n>sNo}" />
+                        </Column> -->
+                        <Column id="idColHdrDashComp4id">
+                            <Text
+                                id="idColHdrTextComDash4"
+                                text="{i18n>employeeIdLabel}"
+                            />
+                        </Column>
+                        <Column id="idColHdrDashComp3">
+                            <Text
+                                id="idColHdrTextComDash3"
+                                text="{i18n>employeeName}"
+                            />
+                        </Column>
+
+                        <!-- <Column id="idColHdrDashComp2">
+                            <Text
+                                id="idColHdrTextComDash2"
+                                text="{i18n>LocationId}"
+                                wrapping="true"
+                            />
+                        </Column> -->
+<!-- 
+                        <Column id="idColHdrDashComp8">
+                            <Text
+                                id="idColHdrTextComDash8"
+                                text="{i18n>createdOnLabel}"
+                            />
+                        </Column> -->
+                        <Column id="idColHdrDashComp9">
+                            <Text
+                                id="idColHdrTextComDash9"
+                                text="{i18n>ConfirmedOn}"
+                            />
+                        </Column>
+                        <!-- <Column id="idColHdrDashComp10">
+                            <Text
+                                id="idColHdrTextComDash10"
+                                text="{i18n>ApprovedOn}"
+                            />
+                        </Column> -->
+                        <Column id="idColHdrDashComp11">
+                            <Text
+                                id="idColHdrTextComDash11"
+                                text="{i18n>RejectedOn}"
+                            />
+                        </Column>
+
+                        <Column id="idColHdrDashComp12">
+                            <Text
+                                id="idColHdrTextComDash12"
+                                text="{i18n>status}"
+                            />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem
+                            id="idClmLstItmDashComp"
+                            type="Navigation"
+                            press="handleOnItemPress"
+                        >
+                            <cells>
+                                <!-- <ObjectIdentifier id="idObjinternal" title="{InternalID}"></ObjectIdentifier> -->
+                                <!-- <ObjectIdentifier
+                                    id="idcellValComp1"
+                                    title="{Pernr}"
+                                    text="{EmployeeName}"
+                                /> -->
+
+                              <Text
+                                    id="idcellValComp2"
+                                    text="{Pernr}"
+                                />
+                                <Text
+                                    id="idcellValComp3"
+                                    text="{EmployeeName}"
+                                />
+
+                                <!-- <Text
+                                    id="idcellValComp4"
+                                    text="{
+                                        path:'CreatedOn',
+                                        formatter:'.formatter.formatDate'
+                                    }"
+                                /> -->
+                                <Text
+                                    id="idcellValComp5"
+                                    text="{
+                                        path:'ConfirmedOn',
+                                        formatter:'.formatter.formatDate'
+                                    }" 
+                                />
+                                <!-- <Text
+                                    id="idcellValComp6"
+                                    text="{
+                                        path:'ApprovedOn',
+                                        formatter:'.formatter.formatDate'
+                                    }"
+                                /> -->
+                                <Text
+                                    id="idcellValComp7"
+                                    text="{
+                                        path:'RejectedOn',
+                                        formatter:'.formatter.formatDate'
+                                    }"
+                                />
+
+                                <ObjectStatus
+                                    id="idcellValComp12"
+                                    text="{
+                                        path:'Status',
+                                        formatter: '.formatter.formatStatusText'
+                                    }"
+                                    class="statusBoldText"
+                                    state="{
+                                        path:'Status',
+                                        formatter: '.formatter.formatStatusState'
+                                    }"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

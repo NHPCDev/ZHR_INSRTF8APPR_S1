@@ -1,0 +1,64 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Dialog
+        id="idAddSelfDialog"
+        title="{i18n>addDpId}"
+        draggable="true"
+        resizable="true"
+        titleAlignment="Center"
+    >
+        <content>
+            <f:SimpleForm
+                id="idAddSelfSimpleForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+            >
+                <Label
+                    id="idLblPanNoSelf1"
+                    text="{i18n>noOfSecurity}"
+                    required="true"
+                />
+                <Input
+                    id="idInpPanNoSelf1"
+                    change="onInputChange"
+                    value="{viewModel>/SelfPopup/NoOfSecuritiesheld}"
+                    valueState="{viewModel>/selfPopupValidation/NoOfSecuritiesheldState}"
+                    valueStateText="{viewModel>/selfPopupValidation/NoOfSecuritiesheldStateText}"
+                />
+
+                <Label
+                    id="idLblPhoneSelf"
+                    text="{i18n>dpId}"
+                    required="true"
+                />
+                <Input
+                    id="idInpPhoneSelf"
+                    change="onInputChange"
+                    value="{viewModel>/SelfPopup/DPClientID}"
+                    valueState="{viewModel>/selfPopupValidation/DPClientIDState}"
+                    valueStateText="{viewModel>/selfPopupValidation/DPClientIDStateText}"
+                />
+            </f:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button
+                id="idBtnSelfSubmit"
+                text="{i18n>submitBtnTxt}"
+                type="Emphasized"
+                press="onSelfPopupSubmit"
+            />
+        </beginButton>
+
+        <endButton>
+            <Button
+                id="idBtnSelfClose"
+                text="{i18n>closeBtnTxt}"
+                press="onSelfPopupClose"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,32 @@
+/* Enter your custom styles here */
+.statusBoldText {
+    font-weight: bold;
+}
+.formHeading {
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    color: #0d4a8b !important;
+    text-align: center;
+}
+
+.formSubHeading {
+    width: 100%;
+    text-align: center;
+    color: #003366;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.previewLabelText {
+    font-family: "72-Bold", sans-serif !important;
+}
+.hideExtraText .sapMText {
+    display: none;
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-wrap: break-word;
+    cursor: text;
+    font-size: .875rem;
+    font-family: "72", "72full", Arial, Helvetica, sans-serif;
+    line-height: normal;
+    color: #1d2d3e;
+}

@@ -1,0 +1,149 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <VBox id="idVboxEmpDtl">
+        <f:SimpleForm
+            id="idEmployeeDetailsSimpleForm"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            columnsXL="2"
+            columnsL="2"
+            columnsM="2"
+            singleContainerFullSize="true"
+        >
+            <f:content>
+                <!-- Section 1 -->
+                <core:Title
+                    id="idEmpDtlTitle1"
+                    text=""
+                />
+
+                <Label
+                    id="idLblEmployeeId"
+                    text="{i18n>employeeIdLabel}"
+                />
+                <Input
+                    id="idInpEmployeeId"
+                    value="{path:'viewModel>/EmpDetails/PERNR', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                />
+
+                <Label
+                    id="idLblEmployeeName"
+                    text="{i18n>employeeNameLabel}"
+                />
+                <Input
+                    id="idInpEmployeeName"
+                    value="{path:'viewModel>/EmpDetails/ENAME', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                />
+
+                 <Label
+                    id="idLblCompanyCode"
+                    text="{i18n>empUserIdLabel}"
+                />
+                <Input
+                    id="idInpCompanyCode"
+                    value="{path:'viewModel>/EmpDetails/USRID', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                />
+               
+
+                <!-- <Label
+                    id="idLblCompanyCode"
+                    text="{i18n>companyCodeLabel}"
+                />
+                <Input
+                    id="idInpCompanyCode"
+                    value="{path:'viewModel>/EmpDetails/BUKRS', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                /> -->
+               
+                 <!-- <Label
+                    id="idLblPersonalSubArea"
+                    text="{i18n>personalSubAreaLabel}"
+                />
+                <Input
+                    id="idInpPersonalSubArea"
+                    value="{path:'viewModel>/EmpDetails/WERKS', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                /> -->
+
+
+                <!-- Section 2 -->
+                <core:Title
+                    id="idEmpDtlTitle2"
+                    text=""
+                />
+
+                <!-- <Label
+                    id="idLblDepartment"
+                    text="{i18n>departmentLabel}"
+                />
+                <Input
+                    id="idInpDepartment"
+                    value="{path:'viewModel>/EmpDetails/DEP', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                /> -->
+
+                <!-- <Label
+                    id="idLblPosition"
+                    text="{i18n>positionLabel}"
+                />
+                <Input
+                    id="idInpPosition"
+                    value="{path:'viewModel>/EmpDetails/DESIG', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                />
+                 <Label
+                    id="idLblGrade"
+                    text="{i18n>gradeLabel}"
+                />
+                <Input
+                    id="idInpGrade"
+                    value="{path:'viewModel>/EmpDetails/GRADE', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                /> -->
+                 <Label
+                    id="idLblEmployeeMobile"
+                    text="{i18n>employeeMobileLabel}"
+                />
+                <Input
+                    id="idInpEmployeeMobile"
+                    value="{path:'viewModel>/EmpDetails/MOBILE', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                />
+                  <Label
+                    id="idLblEmployeeEmail"
+                    text="{i18n>employeeEmailLabel}"
+                />
+                <Input
+                    id="idInpEmployeeEmail"
+                    value="{path:'viewModel>/EmpDetails/EMAIL', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                />
+                 <Label
+                    id="idLblDepartment"
+                    text="{i18n>empDojLabel}"
+                />
+                <Input
+                    id="idInpDepartment"
+                    value="{path:'viewModel>/EmpDetails/DATE_JOIN', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                />
+<!-- 
+                <Label
+                    id="idLblPersonalSubAreaDesc"
+                    text="{i18n>personalSubAreaDescLabel}"
+                />
+                <Input
+                    id="idInpPersonalSubAreaDesc"
+                    value="{path:'viewModel>/EmpDetails/PLANT', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                /> -->
+            </f:content>
+        </f:SimpleForm>
+    </VBox>
+</core:FragmentDefinition>

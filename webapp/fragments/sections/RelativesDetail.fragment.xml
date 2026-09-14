@@ -1,0 +1,147 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Table
+        id="idrelativeDetailsTables"
+        mode="None"
+        items="{
+            path:'viewModel>/RelativeDetails'
+        }"
+        growing="true"
+        updateFinished="onManageRelativeTableUpdateFinish"
+    >
+        <headerToolbar>
+            <OverflowToolbar id="idOverTlbrComDtl">
+                <content>
+                    <Title
+                        id="idRelativeTableTitles"
+                        text="{i18n>ManageRelativeTableTitle}"
+                        level="H2"
+                    />
+                    <ToolbarSpacer id="idRelativeToolbarSpacer" />
+
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+
+        <!-- <columns>
+            <Column id="idColHdrDtlComp1">
+                <Text
+                    id="idColHdrTxtDtlComp1"
+                    text="{i18n>sNoRelative}"
+                />
+            </Column>
+            <Column id="idColHdrDtlComp5">
+                <Text
+                    id="idColHdrTxtDtlComp5"
+                    text="{i18n>noOfSecuritiesHeld}"
+                />
+            </Column>
+             <Column id="idColHdrDtlComp4">
+                <Text
+                    id="idColHdrTxtDtlComp4"
+                    text="{i18n>dpIdRelativeLbl}"
+                />
+            </Column>
+
+            <Column id="idColHdrDtlComp2">
+                <Text
+                    id="idColHdrTxtDtlComp2"
+                    text="{i18n>nameOfImmediateRelatives}"
+                />
+            </Column>
+
+            <Column id="idColHdrDtlComp3">
+                <Text
+                    id="idColHdrTxtDtlComp3"
+                    text="{i18n>relationOfImmediateRelative}"
+                />
+            </Column>
+
+           
+           
+        </columns>
+
+        <items>
+            <ColumnListItem id="idCompDtlCllstItm">
+                <cells>
+                    <ObjectIdentifier id="idObjtablDtl" title="{viewModel>SlNo}"
+                    />
+                   
+                    <Text id="idReltbl05" text="{viewModel>NoOfSecuritiesheld}" />
+                      <Text id="idReltbl03" text="{viewModel>DPClientID}" />
+                     <Text id="idReltbl01" text="{viewModel>NameOfImmediateRelatives}" />
+                    <Text id="idReltbl02" text="{viewModel>RelationOfImmediateRelative}" />
+                  
+                </cells>
+            </ColumnListItem>
+        </items> -->
+         <columns>
+            <Column id="idColHdrDtlComp1">
+                <Text
+                    id="idColHdrTxtDtlComp1"
+                    text="{i18n>sNoRelative}"
+                />
+            </Column>
+            <Column id="idColHdrDtlComp5">
+                <Text
+                    id="idColHdrTxtDtlComp5"
+                    text="{i18n>nameOfImmediateRelative}"
+                />
+            </Column>
+             <Column id="idColHdrDtlComp4">
+                <Text
+                    id="idColHdrTxtDtlComp4"
+                    text="{i18n>relationship}"
+                />
+            </Column>
+
+            <Column id="idColHdrDtlComp2">
+                <Text
+                    id="idColHdrTxtDtlComp2"
+                    text="{i18n>PANofImmediateRelative}"
+                />
+            </Column>
+
+            <Column id="idColHdrDtlComp3">
+                <Text
+                    id="idColHdrTxtDtlComp3"
+                    text="{i18n>MobileofImmediateRelative}"
+                />
+            </Column>
+            <Column id="idColHdrDtlComp31">
+                <Text
+                    id="idColHdrTxtDtlComp31"
+                    text="{i18n>noOfSecuruitiesHeldforRelative}"
+                />
+            </Column>
+            <Column id="idColHdrDtlComp32">
+                <Text
+                    id="idColHdrTxtDtlComp32"
+                    text="{i18n>dpClientIDofRelative}"
+                />
+            </Column>
+
+           
+           
+        </columns>
+
+        <items>
+            <ColumnListItem id="idCompDtlCllstItm">
+                <cells>
+                    <ObjectIdentifier id="idObjtablDtl" title="{viewModel>SlNo}"
+                    />
+                   <Text id="idReltbl01" text="{viewModel>NameOfImmediateRelatives}" />
+                    <Text id="idReltbl012" text="{viewModel>RelationOfImmediateRelative}" />
+                    <Text id="idReltbl013" text="{viewModel>PanOfImmediateRelative}" />
+                    <Text id="idReltbl014" text="{viewModel>PhoneNoOfImmediateRelative}" />
+                    <Text id="idReltbl05" text="{viewModel>NoOfSecuritiesheld}" />
+                      <Text id="idReltbl03" text="{viewModel>DPClientID}" />
+                  
+                </cells>
+            </ColumnListItem>
+        </items>
+
+    </Table>
+</core:FragmentDefinition>

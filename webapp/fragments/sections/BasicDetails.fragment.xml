@@ -1,0 +1,70 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <VBox
+        id="idF8FrsttabVBox"
+        class="sapUiSmallMargin">
+
+        <f:SimpleForm
+            id="idForm8BasicDetailForm"
+            editable="true"
+            layout="ColumnLayout"
+            columnsXL="2"
+            columnsL="2"
+            columnsM="2"
+            singleContainerFullSize="true">
+
+            <f:content>
+
+               
+                <Label
+                    id="idF8Label5"
+                    text="Institution of Graduation"
+                    required="true" />
+
+                <Input
+                    id="idF8InpF1"
+                    value="{viewModel>/Header/Institution}"
+                    editable="{viewModel>/editable}"
+                    valueState="{viewModel>/validation/InstitutionState}"
+                    valueStateText="{viewModel>/validation/InstitutionStateText}"
+                    change="onInputChange" />
+
+                <Label
+                    id="idF8Label6"
+                    text="Name of past employer, If any"
+                    required="true" />
+
+                <Input
+                    id="idF8InpF2"
+                    value="{viewModel>/Header/PastEmployer}"
+                    editable="{viewModel>/editable}"
+                    valueState="{viewModel>/validation/PastEmployerState}"
+                    valueStateText="{viewModel>/validation/PastEmployerStateText}"
+                    change="onInputChange" />
+                
+                <Label
+                    id="idF8Label4"
+                    text="Date of becoming Designated Person"
+                    required="true" />
+
+                <DatePicker
+                    id="idDesignationDate"
+                    value="{viewModel>/Header/DateOfJoiningDP}"
+                    displayFormat="dd.MM.yyyy"
+                    valueFormat="yyyyMMdd"
+                    editable="{viewModel>/editable}"
+                    maxDate="{viewModel>/CurrentDate}"
+                    valueState="{viewModel>/validation/DateOfJoiningDPState}"
+                    valueStateText="{viewModel>/validation/DateOfJoiningDPStateText}"
+                    change="onDateChange" />
+
+            </f:content>
+
+        </f:SimpleForm>
+
+    </VBox>
+
+</core:FragmentDefinition>

@@ -1,0 +1,12 @@
+{
+    "cols": [
+        {
+            "label": "Employee ID",
+            "template": "Empid"
+        },
+        {
+            "label": "Employee Name",
+            "template": "FullName"
+        }
+    ]
+}
