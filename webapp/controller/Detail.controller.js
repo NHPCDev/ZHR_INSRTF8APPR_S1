@@ -126,6 +126,8 @@ sap.ui.define([
 
                     var oHeader = oData.results[0];
                     oViewModel.setProperty("/Header", oHeader);
+                    oViewModel.setProperty("/EmpDetails/DESIG", oHeader.Designation);
+                    oViewModel.setProperty("/EmpDetails/DEP", oHeader.Department);
 
                     var aSelfDetails = oHeader.SELF_RECORDS.results || [];
                     aSelfDetails.forEach(function (oItem, iIndex) {
@@ -171,7 +173,7 @@ sap.ui.define([
                 success: function (oData) {
                     BusyIndicator.hide();
                     oVM.setProperty("/History", oData.results);
-                    console.log("History Data", oData.results);
+                    // console.log("History Data", oData.results);
                 }.bind(this),
 
                 error: function (oError) {
@@ -188,57 +190,56 @@ sap.ui.define([
                 }.bind(this)
             });
         },
-        _getEmployeeDetails: function (Userid) {
+       _getEmployeeDetails: async function (Userid) {
             var oModel = this.getOwnerComponent().getModel();
             var oVM = this.getModel("viewModel");
             var aFilters = [];
 
             if (Userid) {
                 aFilters.push(
-                    new Filter(
-                        "USRID",
-                        FilterOperator.EQ,
-                        Userid
-                    )
+                    new Filter( "USRID", FilterOperator.EQ, Userid)
                 );
             } else {
                 aFilters.push(
-                    new Filter(
-                        "DFLT",
-                        FilterOperator.EQ,
-                        "X"
-                    )
+                    new Filter( "DFLT", FilterOperator.EQ, "X")
                 );
             }
             BusyIndicator.show();
-            oModel.read("/ZFI_GH_USER_F4", {
-                filters: aFilters,
-                success: function (oData) {
-                    BusyIndicator.hide();
+            return new Promise((resolve, reject) => {
+                oModel.read("/ZFI_GH_USER_F4", {
+                    filters: aFilters,
+                    success: function (oData) {
+                        BusyIndicator.hide();
 
-                    if (oData.results.length > 0) {
+                        if (oData.results.length > 0) {
 
-                        var oEmp = oData.results[0];
+                            var oEmp = oData.results[0];
 
-                        oVM.setProperty("/EmpDetails", oEmp);
-                        console.log("Employee Details", oEmp);
+                            oVM.setProperty("/EmpDetails", oEmp);
+                            // console.log("Employee Details", oEmp);
+                            if(Userid){
+                                oVM.setProperty("/EmpDetails/DESIG", "");
+                                oVM.setProperty("/EmpDetails/DEP", "");
+                            }
 
-                    }
-                }.bind(this),
+                        }
+                        resolve()
+                    }.bind(this),
 
-                error: function (oError) {
+                    error: function (oError) {
 
-                    BusyIndicator.hide();
+                        BusyIndicator.hide();
 
-                    if (oError.statusCode === "500") {
-                        var xmlDoc = new DOMParser().parseFromString(oError.responseText, "application/xml");
-                        messenger.error(xmlDoc.getElementsByTagName("message")[0].textContent);
-                    } else {
-                        messenger.error(JSON.parse(oError.responseText).error.message.value);
-                    }
+                        if (oError.statusCode === "500") {
+                            var xmlDoc = new DOMParser().parseFromString(oError.responseText, "application/xml");
+                            messenger.error(xmlDoc.getElementsByTagName("message")[0].textContent);
+                        } else {
+                            messenger.error(JSON.parse(oError.responseText).error.message.value);
+                        }
 
-                }.bind(this)
-            });
+                    }.bind(this)
+                });
+            })
         },
         _initializeCreateData: function () {
             var oViewModel = this.getModel("viewModel");
@@ -356,7 +357,7 @@ sap.ui.define([
             oModel.create("/Form8HeadSet", oPayload, {
 
                 success: function (oData) {
-                    console.log("odata", oData)
+                    // console.log("odata", oData)
 
                     BusyIndicator.hide();
                     var sDPClientID = oData.DPClientID;
@@ -1511,7 +1512,7 @@ sap.ui.define([
             var oModel = this.getModel();
 
             var oHeader = oViewModel.getProperty("/Header");
-            console.log("Return Header", oHeader);
+            // console.log("Return Header", oHeader);
             var aSelfDetails = oViewModel.getProperty("/SelfDetails") || [];
             var aRelativeDetails = oViewModel.getProperty("/RelativeDetails") || [];
             // var RejectionRemarks = oHeader.RejectionRemarks;
@@ -1572,7 +1573,7 @@ sap.ui.define([
                 oPayload.InternalID = oHeader.InternalID
             }
 
-            console.log("Return Payload", oPayload);
+            // console.log("Return Payload", oPayload);
 
             BusyIndicator.show();
 

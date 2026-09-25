@@ -1348,7 +1348,7 @@ sap.ui.define([
                     data: JSON.stringify(payload),
                     success: function (oResp) {
                         BusyIndicator.hide();
-                        console.log(oResp);
+                        // console.log(oResp);
                     }.bind(this),
                     error: function (error) {
                         BusyIndicator.hide();

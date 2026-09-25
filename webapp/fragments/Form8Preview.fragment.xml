@@ -54,72 +54,6 @@
                         class="sapUiSmallMarginBottom"
                     />
 
-                    <!-- Employee Details -->
-
-                    <!-- <f:SimpleForm
-                        id="idPreviewEmployeeForm"
-                        editable="false"
-                        layout="ResponsiveGridLayout"
-                        columnsL="2"
-                        columnsXL="2"
-                    >
-                        <f:content>
-                            <Label
-                                id="idLblPreviewNameDesignation"
-                                text="{i18n>previewNameDesignation}"
-                            />
-
-                            <Text
-                                id="idTxtPreviewNameDesignation"
-                                text="{viewModel>/Header/EmployeeName}"
-                            />
-                            <Label
-                                id="idLblPreviewDesignation"
-                                text="{i18n>previewDesignation}"
-                            />
-
-                            <Text
-                                id="idTxtPreviewDesignation"
-                                text="{viewModel>/Header/Designation}"
-                            />
-
-                            <Label
-                                id="idLblPreviewEmployeeNumber"
-                                text="{i18n>previewEmployeeNumber}"
-                            />
-
-                            <Text
-                                id="idTxtPreviewEmployeeNumber"
-                                text="{viewModel>/Header/Pernr}"
-                            />
-
-                            <Label
-                                id="idLblPreviewDepartment"
-                                text="{i18n>previewDepartment}"
-                            />
-
-                            <Text
-                                id="idTxtPreviewDepartment"
-                                text="{viewModel>/Header/Department}"
-                            />
-
-                            <Label
-                                id="idLblPreviewDesignationDate"
-                                text="{i18n>previewDesignationDate}"
-                            />
-
-                            <Text
-                                id="idTxtPreviewDesignationDate"
-                                text="{
-                                        path:'viewModel>/Header/DateOfJoiningDP',
-                                        formatter:'.formatter.formatDate'
-                                    }"
-                            />
-
-                        </f:content>
-                    </f:SimpleForm> -->
-                    <!-- Employee Details -->
-
                     <VBox
                         id="idPreviewEmployeeForm"
                         class="sapUiMediumMarginBottom"
@@ -168,7 +102,7 @@
                             />
                             <Text
                                 id="idTxtPreviewDesignation"
-                                text="{viewModel>/EmpDetails/DESIG}"
+                                text="{viewModel>/Header/Designation}"
                             />
                         </HBox>
 
@@ -184,7 +118,7 @@
                             />
                             <Text
                                 id="idTxtPreviewDepartment"
-                                text="{viewModel>/EmpDetails/DEPT}"
+                                text="{viewModel>/Header/Department}"
                             />
                         </HBox>
 

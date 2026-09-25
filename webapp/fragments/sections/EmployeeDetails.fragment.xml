@@ -21,16 +21,6 @@
                 />
 
                 <Label
-                    id="idLblEmployeeId"
-                    text="{i18n>employeeIdLabel}"
-                />
-                <Input
-                    id="idInpEmployeeId"
-                    value="{path:'viewModel>/EmpDetails/PERNR', formatter: '.formatter.formatBlankValue'}"
-                    editable="false"
-                />
-
-                <Label
                     id="idLblEmployeeName"
                     text="{i18n>employeeNameLabel}"
                 />
@@ -40,13 +30,23 @@
                     editable="false"
                 />
 
-                 <Label
-                    id="idLblCompanyCode"
-                    text="{i18n>empUserIdLabel}"
+                <Label
+                    id="idLblEmployeeId"
+                    text="{i18n>employeeIdLabel}"
                 />
                 <Input
-                    id="idInpCompanyCode"
-                    value="{path:'viewModel>/EmpDetails/USRID', formatter: '.formatter.formatBlankValue'}"
+                    id="idInpEmployeeId"
+                    value="{path:'viewModel>/EmpDetails/PERNR', formatter: '.formatter.formatBlankValue'}"
+                    editable="false"
+                />
+
+                 <Label
+                    id="idLblEmployeeDesignation"
+                    text="{i18n>empDesigLabel}"
+                />
+                <Input
+                    id="idInpDesig"
+                    value="{path:'viewModel>/Header/Designation', formatter: '.formatter.formatBlankValue'}"
                     editable="false"
                 />
                
